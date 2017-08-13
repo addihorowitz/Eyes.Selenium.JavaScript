@@ -15,7 +15,7 @@ exports.config = {
     framework: 'jasmine2',
     jasmineNodeOpts: {
         showColors: true,
-        defaultTimeoutInterval: 300000
+        defaultTimeoutInterval: 600000
     },
     onPrepare: function() {
         // we need this to get appName and testName and pass them to eyes.open in beforeEach
