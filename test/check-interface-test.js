@@ -26,7 +26,12 @@ test.beforeEach(t => {
 });
 
 test("Different check methods on TestHtmlPages", () => {
-    driver.get("https://astappev.github.io/test-html-pages/");
+    try {
+       driver.get("https://astappev.github.io/test-html-pages/");
+    } catch (TimeoutException) {
+       LOG.error("Catching timeout exception");
+       driver.navigate().refresh();
+    }
 
     // Entire window, equivalent to eyes.checkWindow()
     eyes.check("Entire window", Target.window()

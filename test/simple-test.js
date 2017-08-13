@@ -24,7 +24,12 @@ test.beforeEach(t => {
 });
 
 test("Simple methods on TestHtmlPages", () => {
-    driver.get('https://astappev.github.io/test-html-pages/');
+    try {
+       driver.get('https://astappev.github.io/test-html-pages/');
+    } catch (TimeoutException) {
+       LOG.error("Catching timeout exception");
+       driver.navigate().refresh();
+    }
 
     eyes.addProperty("MyProp", "I'm correct!");
 

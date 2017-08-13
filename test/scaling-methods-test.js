@@ -28,7 +28,12 @@ test.beforeEach(t => {
 });
 
 test("Using scaling methods on TestHtmlPages", () => {
-    driver.get("https://astappev.github.io/test-html-pages/");
+    try {
+       driver.get("https://astappev.github.io/test-html-pages/");
+    } catch (TimeoutException) {
+       LOG.error("Catching timeout exception");
+       driver.navigate().refresh();
+    }
 
     eyes.checkWindow("Initial");
 
